@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saiful Arcade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              arcade: ['Orbitron', 'sans-serif'],
+              body: ['Rajdhani', 'sans-serif'],
+            },
+            colors: {
+              neon: {
+                blue: '#22d3ee',
+                purple: '#a855f7',
+                pink: '#ec4899',
+                green: '#22c55e'
+              },
+              dark: {
+                bg: '#020202',
+                card: '#0A0A0A',
+                surface: '#151515'
+              }
+            },
+            animation: {
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Prevent Text Selection & Copying */
+      * {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        -webkit-touch-callout: none !important;
+        outline: none !important;
+      }
+      body {
+        background-color: #020202;
+        color: #f8fafc;
+        font-family: 'Rajdhani', sans-serif;
+        overflow-x: hidden;
+        scrollbar-width: none;
+      }
+      ::-webkit-scrollbar { display: none; }
+
+      /* Premium Arcade Overlay */
+      body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      .text-glow {
+        text-shadow: 0 0 15px rgba(34, 211, 238, 0.6), 0 0 30px rgba(34, 211, 238, 0.4);
+      }
+      .whitespace-nowrap {
+        white-space: nowrap !important;
+      }
+    </style>
+    <script>
+      // Disable Right Click
+      document.addEventListener('contextmenu', event => event.preventDefault());
+      // Disable keyboard shortcuts for inspecting
+      document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i' || e.key === 'j')) e.preventDefault();
+        if (e.key === 'F12') e.preventDefault();
+      });
+    </script>
+    <script type="importmap">
+    {
+      "imports": {
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react": "https://esm.sh/react@^19.2.4",
+        "lucide-react": "https://esm.sh/lucide-react@^0.564.0"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
