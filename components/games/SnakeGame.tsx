@@ -1,6 +1,5 @@
-
 import React, { useRef, useEffect, useCallback, useState } from 'react';
-import { GameProps } from '../../types';
+import { GameProps } from '../../types.ts';
 import { ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Zap, Play } from 'lucide-react';
 
 const GRID_SIZE = 20;
@@ -35,7 +34,6 @@ const SnakeGame: React.FC<GameProps> = ({ onGameOver, onScoreUpdate, isActive })
     if (!audioCtxRef.current) {
       const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
       if (AudioContextClass) {
-        // Fix: Pass empty options object to AudioContext constructor
         audioCtxRef.current = new AudioContextClass({});
       }
     }

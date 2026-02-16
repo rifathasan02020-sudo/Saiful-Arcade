@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { GameKey, HighScores } from './types';
-import MainMenu from './components/MainMenu';
-import GameShell from './components/GameShell';
+import { GameKey, HighScores } from './types.ts';
+import MainMenu from './components/MainMenu.tsx';
+import GameShell from './components/GameShell.tsx';
 
 const App: React.FC = () => {
   const [activeGame, setActiveGame] = useState<GameKey | null>(null);
@@ -46,9 +46,8 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white relative overflow-x-hidden selection:bg-neon-pink selection:text-white font-body">
-      {/* Animated Background Picture Layer - REMOVED IMAGE, KEPT SUBTLE GRADIENTS */}
+      {/* Animated Background Orbs */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        {/* Vibrant Gradient Orbs */}
         <div className="absolute top-[-20%] left-[20%] w-[50vw] h-[50vw] bg-blue-600/10 rounded-full blur-[120px] mix-blend-screen z-20 animate-float" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-pink-600/10 rounded-full blur-[120px] mix-blend-screen z-20 animate-pulse-slow" />
       </div>

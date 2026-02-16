@@ -69,19 +69,15 @@
         font-family: 'Rajdhani', sans-serif;
         overflow-x: hidden;
         scrollbar-width: none;
-        /* Safe area for mobile notches */
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       }
       ::-webkit-scrollbar { display: none; }
 
-      /* Premium Arcade Overlay */
       body::after {
         content: "";
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
         background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
         background-size: 100% 2px, 3px 100%;
         pointer-events: none;
@@ -96,24 +92,24 @@
       }
     </style>
     <script>
-      // Disable Right Click
       document.addEventListener('contextmenu', event => event.preventDefault());
-      // Disable keyboard shortcuts for inspecting
       document.addEventListener('keydown', (e) => {
         if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i' || e.key === 'j')) e.preventDefault();
         if (e.key === 'F12') e.preventDefault();
       });
     </script>
     <script type="importmap">
-    {
-      "imports": {
-        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-        "react/": "https://esm.sh/react@^19.2.4/",
-        "react": "https://esm.sh/react@^19.2.4",
-        "lucide-react": "https://esm.sh/lucide-react@^0.564.0"
-      }
-    }
-    </script>
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.464.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
   </head>
   <body>
     <div id="root"></div>

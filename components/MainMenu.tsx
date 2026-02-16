@@ -1,5 +1,5 @@
 import React from 'react';
-import { GameKey, HighScores, GameMetadata } from '../types';
+import { GameKey, HighScores, GameMetadata } from '../types.ts';
 import { Play, Trophy, Cpu, Zap, Activity, Layers, Grid, ArrowRight, Globe, CarFront } from 'lucide-react';
 
 interface MainMenuProps {
@@ -52,7 +52,6 @@ const GAMES: GameMetadata[] = [
   }
 ];
 
-// Helper for theme-based styles
 const getThemeStyles = (id: GameKey) => {
     switch (id) {
         case GameKey.RACING: return {
@@ -117,8 +116,6 @@ const getThemeStyles = (id: GameKey) => {
 const MainMenu: React.FC<MainMenuProps> = ({ onSelectGame, highScores }) => {
   return (
     <div className="container mx-auto px-4 md:px-6 py-8 md:py-12 max-w-6xl">
-      
-      {/* Header - Removed Hacker Theme */}
       <div className="flex flex-col items-center justify-center mb-16 text-center space-y-4">
          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-lg">
              <span className="relative flex h-2 w-2">
@@ -143,28 +140,21 @@ const MainMenu: React.FC<MainMenuProps> = ({ onSelectGame, highScores }) => {
          </p>
       </div>
 
-      {/* Game Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 relative z-10">
         {GAMES.map((game) => {
           const styles = getThemeStyles(game.id);
-          
           return (
             <div 
               key={game.id}
               onClick={() => onSelectGame(game.id)}
               className={`group relative overflow-hidden bg-[#0A0A0A]/60 backdrop-blur-xl border border-white/10 rounded-[1.5rem] p-6 cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] ${styles.border} ${styles.shadow}`}
             >
-              {/* Dynamic Background Gradient on Hover */}
               <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out ${styles.bg}`} />
-              
               <div className="relative z-10 flex flex-col h-full">
-                
-                {/* Top Row: Icon & Score */}
                 <div className="flex justify-between items-start mb-4">
                    <div className={`p-2.5 rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform duration-300 ${styles.color}`}>
                       {styles.icon}
                    </div>
-                   
                    {highScores[game.id] > 0 && (
                       <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">
                         <Trophy className="w-3 h-3 text-yellow-500" />
@@ -172,21 +162,16 @@ const MainMenu: React.FC<MainMenuProps> = ({ onSelectGame, highScores }) => {
                       </div>
                    )}
                 </div>
-
-                {/* Title & Desc */}
                 <h3 className="font-arcade text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 transition-all">
                   {game.title}
                 </h3>
                 <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6 group-hover:text-slate-400 transition-colors">
                   {game.description}
                 </p>
-
-                {/* Bottom Action */}
                 <div className="mt-auto pt-4 border-t border-white/5 flex items-center justify-between group-hover:border-white/10 transition-colors">
                    <div className="flex flex-col">
                       <span className="text-[9px] uppercase tracking-widest text-slate-600 font-bold group-hover:text-slate-500">Play Now</span>
                    </div>
-                   
                    <div className={`w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300 ${styles.color} group-hover:text-black`}>
                       <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:-rotate-45" />
                    </div>
@@ -197,21 +182,16 @@ const MainMenu: React.FC<MainMenuProps> = ({ onSelectGame, highScores }) => {
         })}
       </div>
 
-      {/* Modern Developer Section */}
       <div className="mt-16 relative group overflow-hidden rounded-[2rem] bg-gradient-to-r from-[#0F0F0F] to-[#050505] border border-white/5 p-8 text-center transition-all duration-500 hover:border-white/10">
          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]"></div>
-         
          <div className="relative z-10 flex flex-col items-center">
             <h3 className="font-arcade text-xs text-slate-500 mb-2 tracking-[0.4em] uppercase font-bold">
               Developed By
             </h3>
-            
             <div className="flex items-center gap-3">
               <h2 className="font-arcade text-3xl md:text-5xl font-black text-white tracking-tight">
                 RIFAT HASAN
               </h2>
-              
-              {/* Website Link Icon */}
               <a 
                 href="https://rifat-hassan-premium-link-in-bio-wy.vercel.app/" 
                 target="_blank" 

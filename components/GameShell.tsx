@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { GameKey } from '../types';
+import { GameKey } from '../types.ts';
 import { ChevronLeft, RotateCcw, Home } from 'lucide-react';
-import SnakeGame from './games/SnakeGame';
-import GalaxyRaidGame from './games/GalaxyRaidGame';
-import NeonPongGame from './games/NeonPongGame';
-import NeonSlideGame from './games/NeonSlideGame';
-import NeonStackGame from './games/NeonStackGame';
-import NeonBreakerGame from './games/NeonBreakerGame';
-import NeonRacerGame from './games/NeonRacerGame';
+import SnakeGame from './games/SnakeGame.tsx';
+import GalaxyRaidGame from './games/GalaxyRaidGame.tsx';
+import NeonPongGame from './games/NeonPongGame.tsx';
+import NeonSlideGame from './games/NeonSlideGame.tsx';
+import NeonStackGame from './games/NeonStackGame.tsx';
+import NeonBreakerGame from './games/NeonBreakerGame.tsx';
+import NeonRacerGame from './games/NeonRacerGame.tsx';
 
 interface GameShellProps {
   gameKey: GameKey;
@@ -74,7 +74,6 @@ const GameShell: React.FC<GameShellProps> = ({ gameKey, highScore, onUpdateScore
 
   return (
     <div className="flex flex-col h-screen max-w-4xl mx-auto p-4 md:p-6 select-none">
-      {/* Top Bar */}
       <div className="flex items-center justify-between mb-6 bg-[#0A0A0A] rounded-2xl p-4 border border-[#1A1A1A]">
         <div className="flex items-center gap-4 min-w-0">
           <button 
@@ -107,11 +106,9 @@ const GameShell: React.FC<GameShellProps> = ({ gameKey, highScore, onUpdateScore
         </div>
       </div>
 
-      {/* Game Area */}
       <div className="flex-1 relative bg-black rounded-[2rem] border border-[#1A1A1A] overflow-hidden shadow-2xl">
         {gameComponent}
 
-        {/* Game Over Overlay */}
         {isGameOver && (
           <div className="absolute inset-0 z-50 bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center animate-in fade-in duration-300">
             <h2 className="font-arcade text-5xl md:text-7xl font-black text-white mb-4 text-glow whitespace-nowrap">GAME OVER</h2>
