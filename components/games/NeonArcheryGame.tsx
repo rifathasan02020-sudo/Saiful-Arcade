@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useCallback } from 'react';
 import { GameProps } from '../../types';
 import { Target } from 'lucide-react';
@@ -68,7 +69,8 @@ const NeonArcheryGame: React.FC<GameProps> = ({ onGameOver, onScoreUpdate, isAct
         if (!audioCtxRef.current) {
             const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
             if (AudioContextClass) {
-                audioCtxRef.current = new AudioContextClass();
+                // Fix: Pass empty options object to AudioContext constructor
+                audioCtxRef.current = new AudioContextClass({});
             }
         }
     }, []);

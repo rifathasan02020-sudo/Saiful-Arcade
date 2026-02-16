@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { GameProps } from '../../types';
 import { ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Zap, Play } from 'lucide-react';
@@ -34,7 +35,8 @@ const SnakeGame: React.FC<GameProps> = ({ onGameOver, onScoreUpdate, isActive })
     if (!audioCtxRef.current) {
       const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
       if (AudioContextClass) {
-        audioCtxRef.current = new AudioContextClass();
+        // Fix: Pass empty options object to AudioContext constructor
+        audioCtxRef.current = new AudioContextClass({});
       }
     }
   }, []);
@@ -61,7 +63,7 @@ const SnakeGame: React.FC<GameProps> = ({ onGameOver, onScoreUpdate, isActive })
       osc.frequency.setValueAtTime(120, now);
       osc.frequency.linearRampToValueAtTime(40, now + 0.4);
       gain.gain.setValueAtTime(0.2, now);
-      gain.gain.linearRampToValueAtTime(0.001, now + 0.4);
+      gain.gain.linearRampToValueAtTime(0.01, now + 0.4);
       osc.start(now); osc.stop(now + 0.4);
     }
   };

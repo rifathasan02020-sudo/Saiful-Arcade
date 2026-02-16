@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { GameProps } from '../../types';
 import { Zap, AlertTriangle } from 'lucide-react';
@@ -71,7 +72,8 @@ const NeonRacerGame: React.FC<GameProps> = ({ onGameOver, onScoreUpdate, isActiv
         if (!audioCtxRef.current) {
             const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
             if (AudioContextClass) {
-                audioCtxRef.current = new AudioContextClass();
+                // Fix: Pass empty options object to AudioContext constructor
+                audioCtxRef.current = new AudioContextClass({});
             }
         }
     }, []);

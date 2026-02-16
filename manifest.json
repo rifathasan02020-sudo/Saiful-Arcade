@@ -1,0 +1,24 @@
+{
+  "name": "Saiful Arcade",
+  "short_name": "SaifulArcade",
+  "description": "Premium Modern Arcade Gaming Hub",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#020202",
+  "theme_color": "#22d3ee",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://i.ibb.co/n81xFqdt/20260216-135334.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://i.ibb.co/n81xFqdt/20260216-135334.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

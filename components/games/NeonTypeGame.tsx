@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { GameProps } from '../../types';
 import { Keyboard as KeyboardIcon, Crosshair } from 'lucide-react';
@@ -67,7 +68,8 @@ const NeonTypeGame: React.FC<GameProps> = ({ onGameOver, onScoreUpdate, isActive
     // Audio Init
     useEffect(() => {
         if (!audioCtxRef.current) {
-            audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+            // Fix: Pass empty options object to AudioContext constructor
+            audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({});
         }
     }, []);
 

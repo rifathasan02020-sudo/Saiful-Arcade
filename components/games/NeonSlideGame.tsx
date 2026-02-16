@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { GameProps } from '../../types';
 import { Lightbulb } from 'lucide-react';
@@ -16,7 +17,8 @@ const NeonSlideGame: React.FC<GameProps> = ({ onGameOver, onScoreUpdate, isActiv
     if (!audioCtxRef.current) {
       const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
       if (AudioContextClass) {
-        audioCtxRef.current = new AudioContextClass();
+        // Fix: Pass empty options object to AudioContext constructor
+        audioCtxRef.current = new AudioContextClass({});
       }
     }
   }, []);

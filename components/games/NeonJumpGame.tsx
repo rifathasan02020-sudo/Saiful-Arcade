@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useCallback } from 'react';
 import { GameProps } from '../../types';
 
@@ -48,7 +49,8 @@ const NeonJumpGame: React.FC<GameProps> = ({ onGameOver, onScoreUpdate, isActive
     // Audio Init
     useEffect(() => {
         if (!audioCtxRef.current) {
-            audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+            // Fix: Pass empty options object to AudioContext constructor
+            audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({});
         }
     }, []);
 
